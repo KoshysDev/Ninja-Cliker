@@ -13,6 +13,7 @@ public class ButtonUpdate : MonoBehaviour
         if (ScoreCount.Score >= minNeed)
         {
             ScoreCount.Score -= minNeed;
+            ScoreCount.CurrentAttack += PlusAtack;
             MainClick.Attack += PlusAtack;
             minNeed += PlusBuy;
 

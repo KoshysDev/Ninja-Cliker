@@ -12,22 +12,11 @@ public class ScoreCount : MonoBehaviour
     private int RandomPref;
     public static bool Death = true;
     public int InteranalScore;
-    public float CurrentAttack;
+    public static float CurrentAttack;
     public int CurrentMinNeed;
-    private float i = 0.0f;
 
     private void FixedUpdate()
     {
-        if (i >= 1.0f)
-        {
-            Score += 1;
-            i = 0;
-        }
-        else
-        {
-            i += CurrentAttack;
-        }
-
         if(GameObject.Find("Enemy") == false && Death == true)
         {
             Death = false;
@@ -38,7 +27,6 @@ public class ScoreCount : MonoBehaviour
 
     void Update()
     {
-        CurrentAttack = MainClick.Attack;
         InteranalScore = Score;
         ScoreText.GetComponent<Text>().text = "Score: " + InteranalScore;
         AttackText.GetComponent<Text>().text = "Attack: " + CurrentAttack;

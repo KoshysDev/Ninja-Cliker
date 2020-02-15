@@ -11,14 +11,31 @@ public class MainClick : MonoBehaviour
     public float MobHealth = 100.0f;
     public int Pay;
     int i = 8;
+    private float timer = 0.0f;
 
     private void OnMouseDown()
     {
         health -= 0.1f / MobHealth * 100f;
     }
 
+    private void Start()
+    {
+        Attack = ScoreCount.CurrentAttack;
+    }
+
     private void Update()
     {
+
+        if (timer >= 1.0f)
+        {
+            health -= Attack;
+            timer = 0;
+        }
+        else
+        {
+            timer += 0.01f;
+        }
+
         if (health <= 0f)
         {
             ScoreCount.Score += Pay;
