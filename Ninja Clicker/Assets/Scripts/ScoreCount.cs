@@ -10,6 +10,7 @@ public class ScoreCount : MonoBehaviour
     public GameObject AttackText;
     public GameObject[] EnemyPrefab = new GameObject[1];
     private int RandomPref;
+    public static bool Death = true;
     public int InteranalScore;
     public float CurrentAttack;
     public int CurrentMinNeed;
@@ -27,17 +28,12 @@ public class ScoreCount : MonoBehaviour
             i += CurrentAttack;
         }
 
-        if(MainClick.death == true)
+        if(GameObject.Find("Enemy") == false && Death == true)
         {
+            Death = false;
             RandomPref = Random.Range(0, 118);
             Instantiate(EnemyPrefab[RandomPref], new Vector3(0, 0, 0), Quaternion.identity);
         }
-    }
-
-    private void Start()
-    {
-
-        Vector3 SpawnPosition = GameObject.Find("Enemy").transform.position;
     }
 
     void Update()

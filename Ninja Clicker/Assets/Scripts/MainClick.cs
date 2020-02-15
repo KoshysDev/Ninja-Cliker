@@ -11,16 +11,10 @@ public class MainClick : MonoBehaviour
     public float MobHealth = 100.0f;
     public int Pay;
     int i = 8;
-    public static bool death = false; 
 
     private void OnMouseDown()
     {
         health -= 0.1f / MobHealth * 100f;
-    }
-
-    private void Start()
-    {
-        death = false;
     }
 
     private void Update()
@@ -28,7 +22,7 @@ public class MainClick : MonoBehaviour
         if (health <= 0f)
         {
             ScoreCount.Score += Pay;
-            death = true;
+            ScoreCount.Death = true;
             Destroy(this.gameObject);
         }
 
