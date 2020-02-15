@@ -29,7 +29,7 @@ public class ScoreCount : MonoBehaviour
 
         if(MainClick.death == true)
         {
-            RandomPref = Random.Range(0, 12);
+            RandomPref = Random.Range(0, 118);
             Instantiate(EnemyPrefab[RandomPref], new Vector3(0, 0, 0), Quaternion.identity);
         }
     }
