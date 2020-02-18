@@ -20,7 +20,7 @@ public class ScoreCount : MonoBehaviour
         if(GameObject.Find("Enemy") == false && Death == true)
         {
             Death = false;
-            RandomPref = Random.Range(0, 118);
+            RandomPref = Random.Range(0, EnemyPrefab.Length);
             Instantiate(EnemyPrefab[RandomPref], new Vector3(0, 0, 0), Quaternion.identity);
         }
     }

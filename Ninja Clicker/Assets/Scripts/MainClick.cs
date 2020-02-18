@@ -11,11 +11,31 @@ public class MainClick : MonoBehaviour
     public float MobHealth = 100.0f;
     public int Pay;
     int i = 8;
+    public GameObject[] Anim = new GameObject[1];
+    public AudioClip[] Audio = new AudioClip[3];
+    public AudioSource AudioS;
+    private static int RandomPref;
     private float timer = 0.0f;
+    public static Vector2 clickPos;
 
     private void OnMouseDown()
     {
         health -= 0.1f / MobHealth * 100f;
+        clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Spawn(clickPos);
+        RandomSound();
+    }
+
+    void Spawn(Vector2 position)
+    {
+        RandomPref = Random.Range(0, Anim.Length);
+        Instantiate(Anim[RandomPref], position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
+    }
+
+    void RandomSound()
+    {
+        AudioS.clip = Audio[Random.Range(0, Audio.Length)];
+        AudioS.Play();
     }
 
     private void Start()

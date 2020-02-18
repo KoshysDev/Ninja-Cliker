@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4939600650720988177, guid: cc876c6d5d68c294d9cb715abbbde05f,
+        type: 3}
+      propertyPath: Anim.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4939600650720988178, guid: cc876c6d5d68c294d9cb715abbbde05f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -71,7 +76,7 @@ PrefabInstance:
     - target: {fileID: 4939600650720988206, guid: cc876c6d5d68c294d9cb715abbbde05f,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy Variant 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc876c6d5d68c294d9cb715abbbde05f, type: 3}
