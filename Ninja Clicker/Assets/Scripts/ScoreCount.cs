@@ -28,7 +28,7 @@ public class ScoreCount : MonoBehaviour
     void Update()
     {
         InteranalScore = Score;
-        ScoreText.GetComponent<Text>().text = "Score: " + InteranalScore;
-        AttackText.GetComponent<Text>().text = "Attack: " + CurrentAttack;
+        ScoreText.GetComponent<Text>().text = "" + InteranalScore;
+        AttackText.GetComponent<Text>().text = "" + CurrentAttack;
     }
 }

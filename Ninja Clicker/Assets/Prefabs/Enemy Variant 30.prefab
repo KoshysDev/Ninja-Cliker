@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 6967059553177177301, guid: e86cb04c79969954b9ca01c5caf0f974,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy Variant 30
       objectReference: {fileID: 0}
     - target: {fileID: 6967059553177177320, guid: e86cb04c79969954b9ca01c5caf0f974,
         type: 3}
@@ -21,7 +21,7 @@ PrefabInstance:
     - target: {fileID: 6967059553177177321, guid: e86cb04c79969954b9ca01c5caf0f974,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6967059553177177321, guid: e86cb04c79969954b9ca01c5caf0f974,
         type: 3}
