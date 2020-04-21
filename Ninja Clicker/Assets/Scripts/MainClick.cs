@@ -20,10 +20,13 @@ public class MainClick : MonoBehaviour
 
     private void OnMouseDown()
     {
-        health -= 0.1f / MobHealth * 100f;
-        clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Spawn(clickPos);
-        RandomSound();
+        if (PauseMenu.p == false)
+        {
+            health -= 0.1f / MobHealth * 100f;
+            clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Spawn(clickPos);
+            RandomSound();
+        }
     }
 
     void Spawn(Vector2 position)

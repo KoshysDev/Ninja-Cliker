@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 5102091630288920664, guid: b3771c6cb6871d04793104cb2d58b247,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5102091630288920664, guid: b3771c6cb6871d04793104cb2d58b247,
         type: 3}
@@ -71,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 5102091630288920676, guid: b3771c6cb6871d04793104cb2d58b247,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy Variant 26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3771c6cb6871d04793104cb2d58b247, type: 3}
