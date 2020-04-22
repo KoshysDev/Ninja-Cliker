@@ -15,8 +15,10 @@ public class MainClick : MonoBehaviour
     public AudioClip[] Audio = new AudioClip[3];
     public AudioSource AudioS;
     private static int RandomPref;
+    private static GameObject MainCamera;
     private float timer = 0.0f;
     public static Vector2 clickPos;
+    public static bool IfSoundOn = true;
 
     private void OnMouseDown()
     {
@@ -25,7 +27,10 @@ public class MainClick : MonoBehaviour
             health -= 0.1f / MobHealth * 100f;
             clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Spawn(clickPos);
-            RandomSound();
+            if(IfSoundOn == true)
+            {
+                RandomSound();
+            }
         }
     }
 
@@ -44,6 +49,7 @@ public class MainClick : MonoBehaviour
     private void Start()
     {
         Attack = ScoreCount.CurrentAttack;
+        MainCamera = GameObject.Find("Main Camera");
     }
 
     private void Update()

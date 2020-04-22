@@ -21,7 +21,7 @@ public class ScoreCount : MonoBehaviour
         {
             Death = false;
             RandomPref = Random.Range(0, EnemyPrefab.Length);
-            Instantiate(EnemyPrefab[RandomPref], new Vector3(0, 0, 0), Quaternion.identity);
+            Instantiate(EnemyPrefab[RandomPref], new Vector3(-0.05f, -1.2f, 19), Quaternion.identity);
         }
     }
 
