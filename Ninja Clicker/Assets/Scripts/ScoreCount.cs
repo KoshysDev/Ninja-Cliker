@@ -14,6 +14,7 @@ public class ScoreCount : MonoBehaviour
     public int InteranalScore;
     public static float CurrentAttack;
     public int CurrentMinNeed;
+    private static bool _firstRun = true;
 
     private void FixedUpdate()
     {
@@ -21,7 +22,12 @@ public class ScoreCount : MonoBehaviour
         {
             Death = false;
             RandomPref = Random.Range(0, EnemyPrefab.Length);
-            Instantiate(EnemyPrefab[RandomPref], new Vector3(-0.05f, -1.2f, 19), Quaternion.identity);
+            Instantiate(EnemyPrefab[RandomPref], new Vector3(-0.05f, -1.5f, 3), Quaternion.identity);
+        }
+        if(_firstRun == true)
+        {
+            GameObject.Find("GameControll").GetComponent<SettingsMenu>().LoadSettings();
+            _firstRun = false;
         }
     }
 

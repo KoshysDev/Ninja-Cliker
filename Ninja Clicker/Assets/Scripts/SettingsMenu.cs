@@ -11,10 +11,26 @@ public class SettingsMenu : MonoBehaviour
     public GameObject SoundSource;
     public Toggle MusicTogle;
     public Toggle SoundToggle;
+    public float CurrentVolume;
+
+    public void SaveSettings()
+    {
+        SaveDataScript.SaveSettings(this);
+    }
+
+    public void LoadSettings()
+    {
+        PlayerSettingsData data = SaveDataScript.LoadSettings();
+        MusicTogle.isOn = data.MusicTogle;  
+        SoundToggle.isOn = data.SoundToggle;
+        CurrentVolume = data.CurrentVolume;
+        audioMixer.SetFloat("volume", CurrentVolume);
+    }
 
     public void SetVolume (float volume)
     {
         audioMixer.SetFloat("volume", volume);
+        CurrentVolume = volume;
     }
 
     public void TurnOffTheMusic()
