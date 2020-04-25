@@ -7,8 +7,20 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject PauseMenuUI = null;
     [SerializeField] private GameObject SettingsUI = null;
     [SerializeField] private GameObject PauseButton = null;
+    public static bool Death = true;
     public static bool p = false;
     public static bool s = false;
+    public GameObject[] EnemyPrefab = new GameObject[1];
+    private int RandomPref;
+
+    private void FixedUpdate()
+    {
+        if(GameObject.FindGameObjectWithTag("Enemy") == false)
+        {
+            PauseMenu.Death = true;
+        }
+        EnemySpawner();
+    }
 
     public void OnExit()
     {
@@ -51,5 +63,16 @@ public class PauseMenu : MonoBehaviour
     public void RedirectDiscord()
     {
         Application.OpenURL("https://discord.gg/ujyhnDP");
+    }
+
+    //enemy spawner
+    public void EnemySpawner()
+    {
+        if (GameObject.FindGameObjectWithTag("Enemy") == false && PauseMenu.Death == true)
+        {
+            PauseMenu.Death = false;
+            RandomPref = Random.Range(0, EnemyPrefab.Length);
+            Instantiate(EnemyPrefab[RandomPref], new Vector3(-0.05f, -1.5f, 3), Quaternion.identity);
+        }
     }
 }

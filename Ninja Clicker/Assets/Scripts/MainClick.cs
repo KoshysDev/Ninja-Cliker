@@ -68,7 +68,7 @@ public class MainClick : MonoBehaviour
         if (health <= 0f)
         {
             ScoreCount.Score += Pay;
-            ScoreCount.Death = true;
+            PauseMenu.Death = true;
             Destroy(this.gameObject);
         }
 
