@@ -10,6 +10,8 @@ public class MainClick : MonoBehaviour
     public float health = 1.0f;
     public float MobHealth = 100.0f;
     public int Pay;
+    public int XP;
+    public int CurrentLelvel;
     int i = 8;
     public GameObject[] Anim = new GameObject[1];
     public AudioClip[] Audio = new AudioClip[3];
@@ -19,6 +21,20 @@ public class MainClick : MonoBehaviour
     private float timer = 0.0f;
     public static Vector2 clickPos;
     public static bool IfSoundOn = true;
+
+    public void UpdateXp(int xp)
+    {
+        XP += xp;
+        int CurLvl = (int)(0.1f * Mathf.Sqrt(XP));
+        if(CurLvl != CurrentLelvel)
+        {
+            CurrentLelvel = CurLvl;
+            //TODO: Add lvlup anim
+        }
+        int XpToNextLvl = 100 * (CurrentLelvel + 1) * (CurrentLelvel + 1);
+        int Difference = XpToNextLvl - XP;
+        int TotalDifference = XpToNextLvl - (100 * CurrentLelvel * CurrentLelvel);
+    }
 
     private void OnMouseDown()
     {
