@@ -1,2 +1,2 @@
 # Ninja-Cliker
-First commercial game in steam and Gplay
+First commercial game in Gplay
