@@ -26,12 +26,12 @@ public static class SaveDataScript
 
             PlayerSettingsData data = formatter.Deserialize(stream) as PlayerSettingsData;
             stream.Close();
-            //Debug.Log("Save file found in " + path);
+            Debug.Log("Save file found in " + path);
             return data;
         }
         else
         {
-            //Debug.Log("Save file not found in " + path);
+            Debug.Log("Save file not found in " + path);
             return null;
         }
     }

@@ -691,7 +691,7 @@ PlayerSettings:
   facebookStatus: 1
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
-  apiCompatibilityLevel: 6
+  apiCompatibilityLevel: 2
   cloudProjectId: 5afba5f8-022a-45d5-a230-938dc4e19319
   framebufferDepthMemorylessMode: 0
   projectName: Ninja Clicker
