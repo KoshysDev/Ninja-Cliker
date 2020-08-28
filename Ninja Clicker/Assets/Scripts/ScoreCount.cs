@@ -24,7 +24,7 @@ public class ScoreCount : MonoBehaviour
     {
         if (_firstRun != true) return;
         // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
-        settingsScript.LoadSettings();
+        //settingsScript.LoadSettings();
         _firstRun = false;
     }
 

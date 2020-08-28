@@ -22,6 +22,21 @@ PrefabInstance:
       propertyPath: Anim.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4939600650720988177, guid: cc876c6d5d68c294d9cb715abbbde05f,
+        type: 3}
+      propertyPath: pay
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939600650720988177, guid: cc876c6d5d68c294d9cb715abbbde05f,
+        type: 3}
+      propertyPath: xp
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939600650720988177, guid: cc876c6d5d68c294d9cb715abbbde05f,
+        type: 3}
+      propertyPath: currentLelvel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4939600650720988178, guid: cc876c6d5d68c294d9cb715abbbde05f,
         type: 3}
       propertyPath: m_LocalPosition.x

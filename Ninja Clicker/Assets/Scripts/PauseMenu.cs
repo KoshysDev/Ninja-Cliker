@@ -10,17 +10,12 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private bool s;
     public GameObject[] enemyPrefab = new GameObject[1];
     private int _randomPref;
-    private GameObject _o;
-
-    private void Start()
-    {
-        _o = GameObject.FindGameObjectWithTag("Enemy");
-    }
-
+    public static GameObject O;
+    
     private void Update()
     {
-        _o = GameObject.FindGameObjectWithTag("Enemy");
-        if (_o != null) return;
+        O = GameObject.FindGameObjectWithTag("Enemy");
+        if (O != null) return;
         Death = true;
         EnemySpawner();
     }
@@ -53,7 +48,7 @@ public class PauseMenu : MonoBehaviour
             settingsUi.SetActive(true);
             pauseMenuUi.SetActive(false);
             s = true;
-            GetComponent<SettingsMenu>().SaveSettings();
+            //GetComponent<SettingsMenu>().SaveSettings();
         }
         else
         {

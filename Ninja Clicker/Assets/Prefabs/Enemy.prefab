@@ -101,9 +101,9 @@ MonoBehaviour:
   healthBar: {fileID: 7379938588393479377}
   health: 1
   mobHealth: 100
-  pay: 0
-  xp: 0
-  currentLelvel: 0
+  pay: 20
+  xp: 20
+  currentLelvel: 1
   anim:
   - {fileID: 0}
   audio:

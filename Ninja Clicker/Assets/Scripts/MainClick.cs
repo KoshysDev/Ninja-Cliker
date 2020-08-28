@@ -33,25 +33,9 @@ public class MainClick : MonoBehaviour
         if (PauseMenu.P != false) return;
         health -= 0.1f / mobHealth * 100f;
         if (Camera.main != null) _clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Spawn(_clickPos);
-        if(IfSoundOn == true)
-        {
-            RandomSound();
-        }
+            //TODO: Animation when hit enemy
     }
-
-    private void Spawn(Vector2 position)
-    {
-        _randomPref = Random.Range(0, anim.Length);
-        Instantiate(anim[_randomPref], position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
-    }
-
-    private void RandomSound()
-    {
-        audioS.clip = audio[Random.Range(0, audio.Length)];
-        audioS.Play();
-    }
-
+    
     private void Start()
     {
         Attack = ScoreCount.CurrentAttack;
@@ -70,7 +54,7 @@ public class MainClick : MonoBehaviour
         {
             _timer += 0.01f;
         }
-
+        
         if (health <= 0f)
         {
             ScoreCount.Score += pay;
