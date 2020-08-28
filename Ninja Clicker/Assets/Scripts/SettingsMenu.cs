@@ -1,18 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using DataScripts;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class SettingsMenu : MonoBehaviour
 {
 
     public AudioMixer audioMixer;
-    public GameObject SoundSource;
-    public Toggle MusicTogle;
-    public Toggle SoundToggle;
-    public float CurrentVolume;
+    public GameObject soundSource;
+    public Toggle musicTogle;
+    public Toggle soundToggle;
+    public float currentVolume;
 
     public void SaveSettings()
     {
@@ -21,40 +20,27 @@ public class SettingsMenu : MonoBehaviour
 
     public void LoadSettings()
     {
-        PlayerSettingsData data = SaveDataScript.LoadSettings();
-        MusicTogle.isOn = data.MusicTogle;  
-        SoundToggle.isOn = data.SoundToggle;
-        CurrentVolume = data.CurrentVolume;
-        audioMixer.SetFloat("volume", CurrentVolume);
+        // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
+        var data = SaveDataScript.LoadSettings();
+        musicTogle.isOn = data.musicTogle;  
+        soundToggle.isOn = data.soundToggle;
+        currentVolume = data.currentVolume;
+        audioMixer.SetFloat("volume", currentVolume);
     }
 
     public void SetVolume (float volume)
     {
         audioMixer.SetFloat("volume", volume);
-        CurrentVolume = volume;
+        currentVolume = volume;
     }
 
     public void TurnOffTheMusic()
     {
-        if(MusicTogle.GetComponent<Toggle>().isOn == false)
-        {
-            SoundSource.SetActive(false);
-        }
-        else
-        {
-            SoundSource.SetActive(true);
-        }
+        soundSource.SetActive(musicTogle.GetComponent<Toggle>().isOn != false);
     }
 
     public void TurnOffTheSound()
     {
-        if (SoundToggle.GetComponent<Toggle>().isOn == false)
-        {
-            MainClick.IfSoundOn = false;
-        }
-        else
-        {
-            MainClick.IfSoundOn = true;
-        }
+        MainClick.IfSoundOn = soundToggle.GetComponent<Toggle>().isOn != false;
     }
 }

@@ -1,34 +1,38 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelLoaderScript : MonoBehaviour
+namespace MainMenuScipts
 {
-    public Animator transition;
-    public float TransitionTime = 1f;
-    public int LevelIndex;
-
-    public void LoadLevel()
+    public class LevelLoaderScript : MonoBehaviour
     {
-        LoadNextLevel();
-    }
+        public Animator transition;
+        public float transitionTime = 1f;
+        public int levelIndex;
+        private static readonly int Start = Animator.StringToHash("Start");
 
-    public void LoadNextLevel()
-    {
-        if(SceneManager.GetActiveScene().buildIndex == 1)
+        // ReSharper disable once UnusedMember.Global
+        public void LoadLevel()
         {
-            PauseMenu.p = false;
+            LoadNextLevel();
         }
-        StartCoroutine(LoadLevelQ(LevelIndex));
-    }
 
-    IEnumerator LoadLevelQ(int levelIndex)
-    {
-        transition.SetTrigger("Start");
+        public void LoadNextLevel()
+        {
+            if(SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                PauseMenu.P = false;
+            }
+            StartCoroutine(LoadLevelQ(levelIndex));
+        }
 
-        yield return new WaitForSeconds(TransitionTime);
+        private IEnumerator LoadLevelQ(int levelId)
+        {
+            transition.SetTrigger(Start);
 
-        SceneManager.LoadScene(levelIndex);
+            yield return new WaitForSeconds(transitionTime);
+
+            SceneManager.LoadScene(levelId);
+        }
     }
 }

@@ -7,6 +7,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4939600650082490658, guid: cc876c6d5d68c294d9cb715abbbde05f,
+        type: 3}
+      propertyPath: bar
+      value: 
+      objectReference: {fileID: 8717864139293226154}
+    - target: {fileID: 4939600650082490658, guid: cc876c6d5d68c294d9cb715abbbde05f,
+        type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 8717864139017175840}
     - target: {fileID: 4939600650720988177, guid: cc876c6d5d68c294d9cb715abbbde05f,
         type: 3}
       propertyPath: Anim.Array.size
@@ -80,3 +90,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc876c6d5d68c294d9cb715abbbde05f, type: 3}
+--- !u!4 &8717864139293226154 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4939600650319406549, guid: cc876c6d5d68c294d9cb715abbbde05f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4355244310546076031}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8717864139017175840 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4939600650580234847, guid: cc876c6d5d68c294d9cb715abbbde05f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4355244310546076031}
+  m_PrefabAsset: {fileID: 0}

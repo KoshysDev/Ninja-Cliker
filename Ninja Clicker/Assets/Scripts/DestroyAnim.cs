@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DestroyAnim : MonoBehaviour
 {
     public float timer = 1.0f;
-    private bool S = false;
+    private bool _s;
 
     public void DestroyMe()
     {
@@ -14,12 +12,12 @@ public class DestroyAnim : MonoBehaviour
 
     private void Start()
     {
-        S = true;
+        _s = true;
     }
 
     private void Update()
     {
-        if (S == true && timer >= 0f)
+        if (_s == true && timer >= 0f)
         {
             timer -= 0.1f;
         }

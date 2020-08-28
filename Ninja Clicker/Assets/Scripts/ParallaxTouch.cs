@@ -1,19 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ParallaxTouch : MonoBehaviour
 {
-    public static Vector2 clickPos;
-    public GameObject MainCamera;
-    private static float _speed = 0.5f;
+    private static Vector2 _сlickPos;
+    public GameObject mainCamera;
+    private const float Speed = 0.5f;
     private static bool _dragTrue = false;
 
     public void OnMouseDrag()
     {
         _dragTrue = true;
-        clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        MainCamera.transform.rotation = Quaternion.Slerp(MainCamera.transform.rotation, Quaternion.Euler(0, clickPos.x * 5, 0), _speed * Time.deltaTime);
+        if (Camera.main != null) _сlickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mainCamera.transform.rotation = Quaternion.Slerp(mainCamera.transform.rotation, Quaternion.Euler(0, _сlickPos.x * 5, 0), Speed * Time.deltaTime);
         _dragTrue = false;
     }
 
@@ -21,7 +19,7 @@ public class ParallaxTouch : MonoBehaviour
     {
         if (_dragTrue == false)
         {
-            MainCamera.transform.rotation = Quaternion.Slerp(MainCamera.transform.rotation, Quaternion.Euler(0, 0, 0), 1.3f * Time.deltaTime);
+            mainCamera.transform.rotation = Quaternion.Slerp(mainCamera.transform.rotation, Quaternion.Euler(0, 0, 0), 1.3f * Time.deltaTime);
         }
     }
 }

@@ -1,22 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 public class HealthBar : MonoBehaviour
 {
-    private Transform Bar;
-    void Start()
-    {
-        Bar = transform.Find("Bar");
-    }
+    public Transform bar;
+    public SpriteRenderer spriteRenderer;
 
     public void SetSize(float sizeNormalized)
     {
-        Bar.localScale = new Vector3(sizeNormalized, 1f);
+        bar.localScale = new Vector3(sizeNormalized, 1f);
     }
 
     public void SetColore(Color color)
     {
-        Bar.Find("BarSprite").GetComponent<SpriteRenderer>().color = color;
+        spriteRenderer.color = color;
     }
 }

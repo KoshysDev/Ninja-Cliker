@@ -1,24 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject PauseMenuUI = null;
-    [SerializeField] private GameObject SettingsUI = null;
-    [SerializeField] private GameObject PauseButton = null;
+    public GameObject pauseMenuUi;
+    public GameObject settingsUi;
+    public GameObject pauseButton;
     public static bool Death = true;
-    public static bool p = false;
-    public static bool s = false;
-    public GameObject[] EnemyPrefab = new GameObject[1];
-    private int RandomPref;
+    public static bool P;
+    [SerializeField] private bool s;
+    public GameObject[] enemyPrefab = new GameObject[1];
+    private int _randomPref;
+    private GameObject _o;
 
-    private void FixedUpdate()
+    private void Start()
     {
-        if(GameObject.FindGameObjectWithTag("Enemy") == false)
-        {
-            PauseMenu.Death = true;
-        }
+        _o = GameObject.FindGameObjectWithTag("Enemy");
+    }
+
+    private void Update()
+    {
+        _o = GameObject.FindGameObjectWithTag("Enemy");
+        if (_o != null) return;
+        Death = true;
         EnemySpawner();
     }
 
@@ -29,33 +32,33 @@ public class PauseMenu : MonoBehaviour
 
     public void OnPlay()
     {
-        if (p == false)
+        if (P == false)
         {
-            PauseMenuUI.SetActive(true);
-            PauseButton.SetActive(false);
-            p = true;
+            pauseMenuUi.SetActive(true);
+            pauseButton.SetActive(false);
+            P = true;
         }
         else
         {
-            PauseMenuUI.SetActive(false);
-            PauseButton.SetActive(true);
-            p = false;
+            pauseMenuUi.SetActive(false);
+            pauseButton.SetActive(true);
+            P = false;
         }
     }
 
     public void Settings()
     {
-        if (s == false && p == true)
+        if (s == false && P == true)
         {
-            SettingsUI.SetActive(true);
-            PauseMenuUI.SetActive(false);
+            settingsUi.SetActive(true);
+            pauseMenuUi.SetActive(false);
             s = true;
-            this.GetComponent<SettingsMenu>().SaveSettings();
+            GetComponent<SettingsMenu>().SaveSettings();
         }
         else
         {
-            PauseMenuUI.SetActive(true);
-            SettingsUI.SetActive(false);
+            pauseMenuUi.SetActive(true);
+            settingsUi.SetActive(false);
             s = false;
         }
     }
@@ -66,13 +69,11 @@ public class PauseMenu : MonoBehaviour
     }
 
     //enemy spawner
-    public void EnemySpawner()
+    private void EnemySpawner()
     {
-        if (GameObject.FindGameObjectWithTag("Enemy") == false && PauseMenu.Death == true)
-        {
-            PauseMenu.Death = false;
-            RandomPref = Random.Range(0, EnemyPrefab.Length);
-            Instantiate(EnemyPrefab[RandomPref], new Vector3(-0.05f, -1.5f, 3), Quaternion.identity);
-        }
+        if (Death != true) return;
+        Death = false;
+        _randomPref = Random.Range(0, enemyPrefab.Length);
+        Instantiate(enemyPrefab[_randomPref], new Vector3(-0.05f, -1.5f, 3), Quaternion.identity);
     }
 }

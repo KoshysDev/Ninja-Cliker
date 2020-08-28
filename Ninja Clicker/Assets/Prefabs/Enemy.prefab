@@ -49,6 +49,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -60,6 +62,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -97,16 +100,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 7379938588393479377}
   health: 1
-  MobHealth: 150
-  Pay: 20
-  Anim:
-  - {fileID: 7092356664149907631, guid: 46e5f5a22ca27974497166168fac8478, type: 3}
-  - {fileID: 2984738457606331737, guid: d0d753c5a2ce1e342aa5692930743740, type: 3}
-  Audio:
-  - {fileID: 8300000, guid: 6657d864836fec64ab3691ddaefea60c, type: 3}
-  - {fileID: 8300000, guid: 3dfa9028e4cafcd49a485f536249aa75, type: 3}
-  - {fileID: 8300000, guid: 94e68f050cab4d34b9b68c06b7730613, type: 3}
-  AudioS: {fileID: 82007464724869390}
+  mobHealth: 100
+  pay: 0
+  xp: 0
+  currentLelvel: 0
+  anim:
+  - {fileID: 0}
+  audio:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  audioS: {fileID: 0}
 --- !u!61 &7379938587960396259
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -306,6 +310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f2b542ed04b7f4caaba9d6cb915528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bar: {fileID: 7379938588361957414}
+  spriteRenderer: {fileID: 7379938588622788524}
 --- !u!1 &7379938588622788526
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,6 +357,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -362,6 +370,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -430,6 +439,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -441,6 +452,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -509,6 +521,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -520,6 +534,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

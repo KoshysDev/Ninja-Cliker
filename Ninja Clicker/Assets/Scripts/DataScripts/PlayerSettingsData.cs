@@ -1,18 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-[System.Serializable]
-public class PlayerSettingsData
+﻿namespace DataScripts
 {
-    public bool MusicTogle;
-    public bool SoundToggle;
-    public float CurrentVolume;
-    
-    public PlayerSettingsData(SettingsMenu settings)
+    [System.Serializable]
+    public class PlayerSettingsData
     {
-        MusicTogle = settings.MusicTogle.isOn;
-        SoundToggle = settings.SoundToggle.isOn;
-        CurrentVolume = settings.CurrentVolume;
+        public bool musicTogle;
+        public bool soundToggle;
+        public float currentVolume;
+    
+        public PlayerSettingsData(SettingsMenu settings)
+        {
+            musicTogle = settings.musicTogle.isOn;
+            soundToggle = settings.soundToggle.isOn;
+            currentVolume = settings.currentVolume;
+        }
     }
 }

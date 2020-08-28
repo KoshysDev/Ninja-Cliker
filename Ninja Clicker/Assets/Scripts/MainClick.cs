@@ -1,104 +1,92 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MainClick : MonoBehaviour
 {
     [SerializeField] public HealthBar healthBar;
     public static float Attack = 0.0f;
     public float health = 1.0f;
-    public float MobHealth = 100.0f;
-    public int Pay;
-    public int XP;
-    public int CurrentLelvel;
-    int i = 8;
-    public GameObject[] Anim = new GameObject[1];
-    public AudioClip[] Audio = new AudioClip[3];
-    public AudioSource AudioS;
-    private static int RandomPref;
-    private static GameObject MainCamera;
-    private float timer = 0.0f;
-    public static Vector2 clickPos;
+    public float mobHealth = 100.0f;
+    public int pay;
+    public int xp;
+    public int currentLelvel;
+    private int _i = 8;
+    public GameObject[] anim = new GameObject[1];
+    public new AudioClip[] audio = new AudioClip[3];
+    public AudioSource audioS;
+    private static int _randomPref;
+    private static GameObject _mainCamera;
+    private float _timer = 0.0f;
+    private static Vector2 _clickPos;
     public static bool IfSoundOn = true;
 
     public void UpdateXp(int xp)
     {
-        XP += xp;
-        int CurLvl = (int)(0.1f * Mathf.Sqrt(XP));
-        if(CurLvl != CurrentLelvel)
-        {
-            CurrentLelvel = CurLvl;
+        this.xp += xp;
+        var curLvl = (int)(0.1f * Mathf.Sqrt(this.xp));
+        currentLelvel = curLvl;
             //TODO: Add lvlup anim
-        }
-        int XpToNextLvl = 100 * (CurrentLelvel + 1) * (CurrentLelvel + 1);
-        int Difference = XpToNextLvl - XP;
-        int TotalDifference = XpToNextLvl - (100 * CurrentLelvel * CurrentLelvel);
     }
 
     private void OnMouseDown()
     {
-        if (PauseMenu.p == false)
+        if (PauseMenu.P != false) return;
+        health -= 0.1f / mobHealth * 100f;
+        if (Camera.main != null) _clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Spawn(_clickPos);
+        if(IfSoundOn == true)
         {
-            health -= 0.1f / MobHealth * 100f;
-            clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Spawn(clickPos);
-            if(IfSoundOn == true)
-            {
-                RandomSound();
-            }
+            RandomSound();
         }
     }
 
-    void Spawn(Vector2 position)
+    private void Spawn(Vector2 position)
     {
-        RandomPref = Random.Range(0, Anim.Length);
-        Instantiate(Anim[RandomPref], position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
+        _randomPref = Random.Range(0, anim.Length);
+        Instantiate(anim[_randomPref], position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
     }
 
-    void RandomSound()
+    private void RandomSound()
     {
-        AudioS.clip = Audio[Random.Range(0, Audio.Length)];
-        AudioS.Play();
+        audioS.clip = audio[Random.Range(0, audio.Length)];
+        audioS.Play();
     }
 
     private void Start()
     {
         Attack = ScoreCount.CurrentAttack;
-        MainCamera = GameObject.Find("Main Camera");
+        _mainCamera = GameObject.Find("Main Camera");
     }
 
     private void Update()
     {
 
-        if (timer >= 1.0f)
+        if (_timer >= 1.0f)
         {
             health -= Attack;
-            timer = 0;
+            _timer = 0;
         }
         else
         {
-            timer += 0.01f;
+            _timer += 0.01f;
         }
 
         if (health <= 0f)
         {
-            ScoreCount.Score += Pay;
+            ScoreCount.Score += pay;
             PauseMenu.Death = true;
             Destroy(this.gameObject);
         }
 
         healthBar.SetSize(health);
-        if(health <= 0.3f)
+        if (!(health <= 0.3f)) return;
+        if(_i <= 0)
         {
-            if(i <= 0)
-            {
-                healthBar.SetColore(Color.white);
-                i = 8;
-            } else {
-                healthBar.SetColore(Color.red);
-                i--;
-            }
+            healthBar.SetColore(Color.white);
+            _i = 8;
+        } else {
+            healthBar.SetColore(Color.red);
+            _i--;
         }
     }
 }

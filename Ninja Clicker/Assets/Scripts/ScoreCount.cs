@@ -1,31 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreCount : MonoBehaviour
 {
     public static int Score;
-    public GameObject ScoreText;
-    public GameObject AttackText;
-    public int InteranalScore;
+    public GameObject scoreText;
+    public GameObject attackText;
+    public int interanalScore;
     public static float CurrentAttack;
-    public int CurrentMinNeed;
+    //public int currentMinNeed;
     private static bool _firstRun = true;
+    public SettingsMenu settingsScript;
+    private Text _text;
+    private Text _text1;
+
+    private void Start()
+    {
+        _text1 = attackText.GetComponent<Text>();
+        _text = scoreText.GetComponent<Text>();
+    }
 
     private void FixedUpdate()
     {
-        if(_firstRun == true)
-        {
-            GameObject.Find("GameControll").GetComponent<SettingsMenu>().LoadSettings();
-            _firstRun = false;
-        }
+        if (_firstRun != true) return;
+        // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
+        settingsScript.LoadSettings();
+        _firstRun = false;
     }
 
-    void Update()
+    private void Update()
     {
-        InteranalScore = Score;
-        ScoreText.GetComponent<Text>().text = "" + InteranalScore;
-        AttackText.GetComponent<Text>().text = "" + CurrentAttack;
+        interanalScore = Score;
+        _text.text = "" + interanalScore;
+        _text1.text = "" + CurrentAttack;
     }
 }
